@@ -1,0 +1,29 @@
+/* display: flex를 반드시 부모한테! */
+.container {background-color: #eef1f5; display: flex;}
+.item {padding: 10px 15px; border: 2px solid; background-color: white;}
+
+/* 부모한테 flex-direction - row(기본값), row-reverse, column, column-reverse*/
+.column {flex-direction: column;}
+
+/* 부모한테 justify-content, align-items */
+.align {height: 200px; flex-direction: column;
+        justify-content: space-between; align-items: start;}
+
+/* 부모한테 flex-wrap - nowrap(기본값 - 찌그러트림), wrap */
+.wrap {height: 200px; flex-wrap: wrap; justify-content: space-between;
+       /* align-content는 줄바꿈 사용 - justify-content에서 
+       사용하는 값들 동일 */ align-content: end;}
+.wrap .item {width: 150px;}
+
+/* gap */
+.gap {gap: 10px; /* margin과의 차이점은 바깥쪽 여백은 안 생김 */}
+
+/* 여기부터는 자식한테 주는 속성들 */
+.grow-1 {flex-grow: 1;}
+.grow-2 {flex-grow: 1;}
+.shrink.item {flex-basis: 300px; /* 아이템 주축 시작 크기 width와 유사 */}
+.shrink-0 {flex-shrink: 0;}
+.flex-1 {flex: 1; /*= flex: 1 1 0; 아이템들을 균등하게 */}
+.order-self {height: 200px; align-items: center;}
+.order {order: -1; /* 기본값이 0, 작을수록 앞으로 */}
+.self {align-self: end;}

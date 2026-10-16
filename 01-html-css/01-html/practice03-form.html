@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 태그</title>
+</head>
+<h2>
+    <h1>넷째바오 100일 잔치 참석 신청서</h1>
+    <p>2026년 9월 11일, 에버랜드 판다월드에서 열립니다.</p>
+       <label for="search">이름</label>
+    <input id="search" 
+               type="text" 
+               name="keyword">
+        <!-- type="submit" 폼 전송 버튼
+             - value : 버튼에 표시될 글자
+        -->
+    </form>    
+    <!-- type만 바꾸면 브라우저가 알맞은 UI 자동으로 바꿈 -->
+        <form action="relation">
+            연락처 <input type="tel" required/><br />
+            이메일 <input type="email" required/><br />
+             넷째바오와의 관계      
+             <!-- select + option : 목록에서 하나 고르기 
+                - disabled : 선택하지 못하게 막음
+                - selected : 처음에는 보임
+             -->
+             <select name="relation">
+                <option disabled selected>선택해주세요</option>
+                <option value="가족(바오패밀리)">가족(바오패밀리)</option>
+                <option value="친구">친구</option>
+                <option value="판다유치원 선생님">판다유치원 선생님</option>
+                <option value="팬">팬</option>
+             </select>
+            </form>
+        <!-- fieldset : 입력 묶음, legend : 묶음의 제목 -->
+        <fieldset>
+            <legend>참석 여부</legend>
+
+            <!-- radio : 여러개 중 하나만 
+                - name 값이 같아야 같은 그룹으로 인식
+            -->
+            <input type="radio" value="참석"/>
+            <label for="male">참석</label>
+            <label><input type="radio" /> 불참</label>
+        </fieldset>
+        <fieldset>
+            <legend>준비해 올 선물</legend>
+            <!-- checkbox : 여러 개 동시 선택 가능 -->
+            <label> <input type="checkbox" /> 대나무 </label>
+            <label> <input type="checkbox" /> 죽순 </label>
+            <label> <input type="checkbox" /> 장난감 </label>
+            <label> <input type="checkbox" /> 사진기 </label>
+        </fieldset> 
+        도착 예정 시간 <input type="time" required/><br />
+             축하 메시지 
+             <!-- textarea : 여러 줄 입력 -->
+             <textarea name="memo"></textarea>
+             <h2>
+             <button type="submit">신청하기</button>
+             </h2>
+    </body>
+</html>

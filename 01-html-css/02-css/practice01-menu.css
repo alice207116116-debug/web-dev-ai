@@ -1,0 +1,11 @@
+.ff-sans {font-family: Jua;}
+.ta-center {text-align: center;}
+.c-name { color: green;}
+.c-name { color: gray;}
+.fw-thin {font-weight: 300;}
+.fw-bold {font-weight: bold;}
+.fs-rem { /* 16px * 1.5 = 24px */ font-size: 1.5rem;}
+
+/* CSS 변수 : 색이나 폰트 등 한 번만 등록, 사용하는 곳에서는 var() */
+:root {--font: "Jua", sans-serif;}
+

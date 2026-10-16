@@ -1,0 +1,74 @@
+.box {background-color: azure;
+      border: 1px solid;
+      margin-bottom: 10px;}
+
+/* width, height */
+.w-fixed {width: 200px;
+          height: 100px;}
+.w-parent {width: 50%;
+           height: 100px; /* 부모의 값이 있어야 % 계산이 가능 */}
+
+/* padding */
+.pad-all {padding: 20px;}
+.pad-parts {padding-left: 10px;
+            /* 값이 4개 - 위 오른쪽 아래 왼쪽 (시계방향) */
+            padding: 30px 20px 40px 10px;
+            /* 값이 3개 - 위 좌우 아래 */
+            padding: 30px 20px 40px;
+            /* 값이 2개 - 위아래 좌우*/
+            padding: 30px 20px;}
+
+/* margin */
+.mar-all { /* margin도 padding처럼 -top, -right, -bottom, -left 존재
+           margin 값 개수에 따라 방향 4개 조절도 동일 */
+           margin: 24px;}
+.mar-auto {width: 300px; margin: auto;}
+
+/* border */
+.bd-solid {width: 90px; height: 90px; border: 3px solid red; 
+           /* solid : 실선 */ }
+.bd-round {width: 90px; height: 90px; border: 3px dashed green;
+           /* dashed : 점선 */
+           border-radius: 10px;}
+.bd-circle {width: 90px; height: 90px; border: 3px dotted blue;
+            /* dotted : 점 */
+            border-radius: 50%;}
+
+/* box-sizing */
+.bs-content, .bs-border {width: 200px; height: 80px ;padding: 20px; 
+                         border: 5px solid aqua;}
+.bs-content { /* 기본값 - width : 내용만 
+              -> 실제 길이 : 200 + 20 * 2 + 5 * 2= 250*/ 
+              box-sizing: content-box;}
+.bs-border { /* width : 테두리까지 -> 실제길이 : 200 */
+             box-sizing: border-box;}
+
+/* display */
+.d-span {display: block;}
+.d-div { /* inline - width/height X, inline-block 
+         -> 가능은 하지만 요즘은 사용 X (뒤에 나올 flex) */
+         display: inline; width: 100px; height: 100px;}
+
+/* position */
+.pos-outer {overflow: auto; height: 250px; 
+            border: 1px solid; background: #f6f6f6;}
+.pos-box {width: 100px; height: 60px; color: #fff;}
+.relative {background-color: navy; position: relative; 
+           top: 10px; left: 10px; z-index: 1;}
+.absolute {background-color: green; position: absolute;
+           top: 20px; left: 20px;}
+.fixed {background-color: crimson;
+        position: fixed; top: 10px; right: 10px;}
+.sticky {background-color: orange; position: sticky; top: 0;}     
+
+/* overflow */
+.of-auto, 
+.of-hidden {overflow: hidden; text-overflow: ellipsis;}
+.of-auto {overflow: auto;}
+
+/* 안 보이게 처리 */
+.hidden {visibility: hidden;}
+.none {display: none;}
+
+ 
+          

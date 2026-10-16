@@ -1,0 +1,15 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+.main-image {width: 600px; height: auto; display: block;
+             margin: 85px auto 0;}
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+.main {position: relative; width: 516px; margin: 0 auto;}
+.main-image {width: 516px; height: auto; display: block;}
+
+/* 지금, 확인하기 버튼 */
+.check-button {position: absolute; top: 300px; left: 50%;
+               transform: translateX(-50%); width: 251px;
+               height: 58px; display: flex; align-items: center;
+               justify-content: center; border-radius: 35px;
+               color: transparent; text-decoration: none;
+               cursor: pointer; display: inline-block;}

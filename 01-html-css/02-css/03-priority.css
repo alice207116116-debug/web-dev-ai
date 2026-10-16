@@ -1,0 +1,5 @@
+.weak {color: hotpink;}
+.strong {color: orange}
+/* !important 가급적으로 사용 금지 */
+p {color: red !important;}
+p {color: blue;}

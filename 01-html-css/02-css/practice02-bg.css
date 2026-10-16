@@ -1,0 +1,16 @@
+* {margin: 0; padding: 0;}
+html {height: 100vh; background-image: url(../assets/bg.jpg);
+      background-repeat: no-repeat; background-position: center;
+      background-size: cover; background-attachment: fixed;
+      background-color: rgb(0 0 0 / 0.45); background-blend-mode: color;}
+
+.ta-center {text-align: center;}
+.c-name { color: white;}
+.c-hex {color: bisque;}
+.fs-rem {font-size: 1.3rem;}
+.fs-px {font-size: 50px;}
+.lh {line-height: 2;}
+
+
+
+

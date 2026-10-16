@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스모델 / disaply / position</title>
+    <link rel="stylesheet" href="./06-box.css">
+</head>
+<body>
+    <h2>width / height</h2>
+    <div class="box w-fixed">px 단위는 고정길이</div>
+    <div class="box w-parent">% 단위는 가변길이</div>
+
+    <h2>padding - 테두리와 내용 사이 (박스 안쪽 여백)</h2>
+    <div class="box pad-all">padding: 20px</div>
+    <div class="box pad-parts">padding: 시계방향</div>
+
+    <h2>margin - 요소와 요소 사이 (박스 바깥 여백)</h2>
+    <div class="box mar-all">margin: 24px</div>
+    <!-- margin collapse(상쇄) : 두 박스 사이가 더해지는 게 아니라
+    큰 값 하나로 합쳐진다. -->
+    <div class="box mar-all" style="margin-top: 48px;">margin: 24px</div>
+    <div class="box mar-auto">width:300px + margin: auto : 가운데</div>
+
+    <h2>border - 두께 / 종류(solid dashed dotted) / 색</h2>
+    <div class="bd-solid"></div>
+    <div class="bd-round"></div>
+    <div class="bd-circle"></div>
+
+    <h2>box-sizing:border-box</h2>
+    <div class="box bs-content">content-box</div>
+    <div class="box bs-border">border-box</div>
+
+    <h2>display</h2>
+    <span class="box d-span">display:block</span>
+    <span class="box d-span">display:block</span>
+    <div class="box d-div">display:inline</div>
+    <div class="box d-div">display:inline</div>
+
+    <h2>position</h2>
+    <p>relative : 원래 자기 기준으로 이동</p>
+    <p>absolute : 가장 가까운 부모가 position:relative 기준 (없으면 화면)</p>
+    <p>fixed : 화면(뷰포트) 기준, 스크롤해도 고정</p>
+    <p>sticky : 스크롤하다가 지정 위치 닿으면 고정</p>
+    <div class="pos-outer">
+      <div class="pos-box relative">relative</div>
+      <div class="pos-box absolute">absolute</div>
+      <div class="pos-box fixed">fixed</div>
+      <div class="pos box sticky">sticky</div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam quasi consectetur odio? Veniam incidunt obcaecati saepe tempore eveniet voluptatum, optio officia accusamus natus quo quos a dolorum aspernatur architecto quisquam hic! Quasi libero beatae ullam perspiciatis. Est, nesciunt dolore aliquid quos illo laborum itaque placeat minus ratione sunt pariatur accusantium! Blanditiis consectetur dolores pariatur cupiditate quae atque ipsa, est laboriosam impedit quas nihil molestiae similique, quia totam. Dolores, minus totam. Consectetur expedita rem, tenetur ullam iusto aliquam! Praesentium aliquam magni tempora a odit, obcaecati maxime tenetur, temporibus autem placeat recusandae aspernatur perspiciatis sunt quasi expedita maiores, voluptate cumque velit ut.</p>
+    </div>
+
+    <h2>overflow - 박스보다 내용이 넘치는 경우</h2>
+    <div class="box of hidden">
+        hidden : Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique quisquam ut impedit illo accusamus. Quidem repudiandae itaque corporis dolore deserunt, voluptatibus sit magni minima, similique culpa nulla et assumenda veritatis.</div>
+    <div class="box of auto">
+        auto : Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde error nulla minus ipsa qui. Dolorum iusto eaque sunt praesentium molestias debitis est sed, perferendis, maxime doloribus repellat adipisci sapiente dignissimos!</div>
+    
+    <h2>visivility:hidden vs display:none</h2>
+    <div class="box hidden">보통 박스</div>
+    <div>visivility:hidden - 자리는 남음</div>
+    <div class="box none">보통 박스</div>
+    <div>display:none - 자리도 없어짐</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+* {margin: 0; padding: 0; box-sizing: border-box; padding: 10px;}
+body {height: 100vh; background: linear-gradient(150deg, rgba(6, 126, 96, 0.699), rgba(9, 83, 126, 0.849));}
+.card {padding-top: 20px;
+       text-align: center; width: 320px; height: 440px; margin: auto; 
+       border: 1px solid rgb(255, 255, 255, 0.5);
+       border-radius: 20px; background-color: rgba(255, 255, 255, 25%)}
+
+img {margin-bottom: 10px; height: 90px; object-fit: cover; border-radius: 50%;}
+
+.profile {border-radius: 50%; border: 3px solid rgba(225, 225, 225, 0.7);
+          width: 115px; height: 115px; margin: auto; 
+          background-image: url(../assets/panda.png);
+          background-size: cover; background-position: center;}
+
+.desc {width: 280px; margin-left: 10px; height: 60px;
+       border-bottom: 1px solid white;}
+
+a {display: block; text-decoration: none; color: inherit;}
+
+.c-name {color: rgb(248, 214, 101);}
+.c-hex {color: white;}
+.fw-bold {font-weight: bold;}
+
+.instagram {background-color: transparent;}
+.instagram a {color: white; text-decoration: none;}
+.bd-round {display: flex; justify-content: center; align-items: center;}
+
+.bd-round {margin-left: 20px; margin-right: 20px; margin-top: 10px;
+           height: 48px; border: 1px solid white; border-radius: 10px;
+           background-color: white; display: flex;
+           justify-content: center; align-items: center;}
+.bd-round a {color: white; text-decoration: none;}
+* {margin: 0; padding: 0; box-sizing: border-box; padding: 10px;}
+body {height: 100vh; background: linear-gradient(150deg, rgba(6, 126, 96, 0.699), rgba(9, 83, 126, 0.849));}
+.card {text-align: center; width: 320px; height: 440px; margin: auto; 
+       border: 1px solid rgb(255, 255, 255, 0.5);
+       border-radius: 20px; background-color: rgba(255, 255, 255, 25%)}
+
+img {margin-bottom: 10px; height: 90px; object-fit: cover; border-radius: 50%;}
+
+.profile {border-radius: 50%; border: 3px solid rgba(225, 225, 225, 0.7);
+          width: 115px; height: 115px; margin: auto; 
+          background-image: url(../assets/panda.png);
+          background-size: cover; background-position: center;}
+
+.desc {width: 280px; margin-left: 10px; height: 60px;
+       border-bottom: 1px solid white;}
+
+a {display: block; text-decoration: none; color: inherit;}
+
+.c-name {color: rgb(248, 214, 101);}
+.c-hex {color: white;}
+.fw-bold {font-weight: bold;}
+
+.instagram {background-color: transparent;}
+.instagram a {color: white; text-decoration: none;}
+.bd-round {display: flex; justify-content: center; align-items: center;}
+
+.bd-round {margin-left: 20px; margin-right: 20px; margin-top: 10px;
+           height: 48px; border: 1px solid white; border-radius: 10px;
+           background-color: white; display: flex;
+           justify-content: center; align-items: center;}
+.bd-round a {color: white; text-decoration: none;}
+.instagram {background-color: transparent; font-weight: bold;}
+.youtube {color: rgb(6, 126, 96);}
+.bd-round a {color: white;text-decoration: none;}
+.youtube {color: rgb(6, 126, 96) !important; font-weight: bold;}
+
+
+
+
+ 

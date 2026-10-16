@@ -1,0 +1,30 @@
+/* font-family : 앞에서부터 있는 글꼴 사용, 없으면 다음 것 */
+.ff-sans {font-family: "돋움", sans-serif;}
+.ff-serif {font-family: "궁서", serif;}
+.ff-web {font-family: "Black Han Sans", sans-serif;}
+/* font-size */
+.fs-px {font-size: 20px;}
+.fs-rem { /* 16px * 1.5 = 24px */ font-size: 1.5rem;}
+/* font-weight */
+.fw-bold {font-weight: bold;}
+.fw-thin {font-weight: 300;}
+/* line-height : 많이 쓰이는 기준이 1.5 ~ 1.8 */
+.lh {line-height: 1.8;}
+/* text-align : left(기본), center, right, justify */
+.ta-center {text-align: center;}
+.ta-right {text-align: right;}
+.ta-justify {text-align: justify;}
+/* color */
+.c-name { /* 브라우저가 인식하는 기본 색상명(Web Colors 216가지) */
+          color: crimson;}
+.c-hex {color: #2f6fed;}
+.c-rgb {color: rgb(47, 111, 237);
+        background: rgba(0, 0, 0, 0.5)}
+.c-hsl {color: hsla(200, 50%, 50%, 0.2);}
+/* text-decoration */
+.td-unerline {text-decoration: underline;}
+.td-none {text-decoration: none;}
+/* letter-spacing : 글자 사이 간격 */
+.ls {letter-spacing: 10px;}
+/* text-shadow : 글자 그림자 */
+.shadow {text-shadow: 2px 2px 4px red;}

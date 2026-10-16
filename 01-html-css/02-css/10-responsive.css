@@ -1,0 +1,23 @@
+body {background: lightblue; color: red;}
+@media (max-width: 1000px) {body {color: blue;}}
+@media (max-width: 700px) {body {color: orange;}}
+@media (min-width: 700px) {body{background-color: lightseagreen;}}
+@media (min-width: 1000px) {body {background-color: lightcoral;}}
+.flex-container {display: flex; gap: 10px; flex-direction: column;}
+.flex-container .item {background: dodgerblue; display: flex;
+                       justify-content: center; align-items: center;
+                       font-weight: bold; color: white; height: 80px;}
+@media (min-width: 600px) {.flex-container {flex-direction: row;}}
+.flex-container .item {flex: 1;}
+.grid-container {display: grid; gap: 10px; grid-template-columns: 1fr;}
+@media (min-width:700px) 
+    {.grid-container {grid-template-columns: repeat(2, 1fr);}}
+@media (min-width: 1000px) 
+    {.grid-container {grid-template-columns: repeat(4, 1fr);}}
+.ratio-grid {display: grid; 
+             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));}
+.ratio-card {background: #111; color: white; display: flex;
+             justify-content: center; align-items: center; font-weight: bold;}
+.ratio-card:first-child {aspect-ratio: 16 / 9;}
+.ratio-card:nth-child {aspect-ratio: 4 / 3;}
+.ratio-card:last-child {aspect-ratio: 1 / 1;}

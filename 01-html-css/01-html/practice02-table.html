@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>판다유치원 성적표</h2>
+    <table border="1">
+        <!-- rowspan : 아래로 어느 정도 차지 -->
+            <th rowspan="3">학생 이름</th>
+            <tr>
+            <!-- colspan : 가로로 어느 정도 차지 -->
+            <th colspan="3">과목</th>
+            <th rowspan="2">평균</th>
+            <!-- tr(table row) : 가로 한 줄 -->
+            </tr>
+        <tr>
+            <th>대나무 먹기</th>
+            <th>나무 타기</th>
+            <th>구르기</th>
+        </tr>
+        <!-- thead : 제목줄, tbody : 데이터줄, tfoot : 합계 등 -->
+            <tr>
+                <td>후이바오</td>
+                <td>100</td>
+                <td>90</td>
+                <td>95</td>
+                <td>95</td>
+            </tr>
+            <tr>
+                <td>루이바오</td>
+                <td>95</td>
+                <td>85</td>
+                <td>90</td>
+                <td>90</td>
+            </tr>
+             <tr>
+                <td>넷째바오</td>
+                <td>60</td>
+                <td>30</td>
+                <td>95</td>
+                <td>61.7</td>
+            </tr>
+        </tbody>
+         <tfoot>
+            <tr>
+            <th colspan="4">총 출석일수</th>
+            <td>96일</td>
+        </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
