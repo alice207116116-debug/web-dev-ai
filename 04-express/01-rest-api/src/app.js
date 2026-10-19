@@ -81,12 +81,28 @@ app.get("/api/cars", async (req, res) => {
     res.status(200).json(rows);
 });
 
-// 정비이력(maintenance_records) 목록 GET http://localhost:4000/api/records
+// 정비이력(maintenance_records) 목록 
+// GET http://localhost:4000/api/records
+// GET http://localhost:4000/api/records?plate=218가 1826
 app.get("/api/records", async (req, res) => {
-  const { rows } = await pool.query(`select plate, name, service_date, item, memo, cost
+  const plate = req.query.plate; // undefied(null)이거나 아니거나 -> 조건문
+  const { rows } = await pool.query(
+    `select plate, name, service_date, item, memo, cost
      from maintenance_records m 
-     join cars c on c.id = m.car_id`);
-});
+     join cars c on c.id = m.car_id
+     where plate = coalesce($1, plate)`,
+    [plate],
+  );
+
+/*
+let queryText = `select plate, name, service_date, item, memo, cost
+     from maintenance_records m 
+     join cars c on c.id = m.car_id`;
+let values = [];
+  if(plate !== undefined) {
+    queryText += `where plate = $1::text`;
+    values.push(plate);
+
 
 // 차량 정보 1개 조회
 // GET http://localhost:4000/api/cars/1
@@ -100,9 +116,24 @@ app.get("/api/cars/:id", async (req, res) => {
 
 // 정비이력 1개 조회 
 // GET http://localhost:4000/api/records/1
+app.get("/api/records/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  const { rows } = await pool.query(
+    `select * from maintenance_records where id = ${id}`
+  );
+  res.status(200).json(rows[0]);
+});
 
 // 정비이력 차량번호로 조회 (심화) - 결과가 여러 개일 수도 있고 아닐 수도 있고 
 // GET http://localhost:4000/api/records/car/1
+app.get("/api/records/:id", async (req, res) => {
+  const id = req.params.id;
+  await { rows } = await pool.query(`select *
+                   from maintenance_records m 
+                   join cars c on c.id = m.car_id
+                   where palte = '218가 1826'`);
+    res.status(200).json(rows);
+});
 
 // 차량 추가 POST http://localhost:4000/api/cars
 // - insert into cars(plate, name, car_type, production_year, fuel, mileage)
@@ -128,6 +159,17 @@ app.post('/api/cars', async (req, res) => {
 // listen : 서버 켜기 - npm run dev : nodemon src/app.js
 app.listen(4000, () => {
   console.log("서버 실행 중 : http://localhost:4000");
+});
+
+// 차량 수정
+// PUT http://localhost:4000/api/cars/3
+
+// 차량 삭제
+// DELETE http://localhost:4000/api/cars/2
+
+// listen : 서버 켜기 - npm run dev : nodemon src/app.js
+app.listen(4000, () => {
+  consoloe.log("서버 실행 중 : http://localhost:4000");
 });
 
 /* 
