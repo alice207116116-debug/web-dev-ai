@@ -163,9 +163,36 @@ app.listen(4000, () => {
 
 // 차량 수정
 // PUT http://localhost:4000/api/cars/3
+app.put("/api/cars/:id", async (red, res) => {
+  const id = req.params.id;
+  console.log(req.body);
+  await pool.query(``);
+  res.sendStatus(200); // 상태 코드만 보내고자 할 때
+});
 
 // 차량 삭제
 // DELETE http://localhost:4000/api/cars/2
+app.put("/api/cars/:id", async (red, res) => {
+  const id = req.params.id;
+  // rowCount : 해당 쿼리문을 실행했을 때 반영된 개수
+  const { rowCount } = await pool.query(`delete from cars where id = $1`, [id]);
+  if (rowCount === 0 ) {
+  return res.status(404).json({ message: "그런 차량이 없어요" });}
+  res.sendStatus(204);
+});
+
+// 라우트에서 난 오류가 전부 여기로 오기 때문에 라우트들보다는 아래에 있으면 된다.
+// app.use 안에 파라미터가 4개면 에러 처리기로 인식한다
+app.use((err, req, res, next) => {
+  if (error.code === "23505") {
+    // unique 위반
+    return res.status(409).json({ message: "이미 존재하는 값입니다."});
+  }
+  if (error.status === 404) {
+    return res.status(404).json({ messasge: error.message });
+  }
+  res.status(500).json({ message: "서버 문제 발생", error: error });
+});
 
 // listen : 서버 켜기 - npm run dev : nodemon src/app.js
 app.listen(4000, () => {

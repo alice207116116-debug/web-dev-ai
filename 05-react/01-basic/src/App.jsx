@@ -25,11 +25,13 @@
     - 리액트는 가상 DOM을 사용하여 브라우저의 실제 DOM과 상호작용
 */
 import { useState } from "react";
+import Counter from "./components/Counter.jsx";
 
 const App = () => {
     const title = "정비노트";
     // waiting = 현재 값, setWaiting = 값을 바꾸는 함수, 0 = 처음 값
-    const [waiting, setWaiting] = useState(0);
+    // 값을 바꾸는 함수명은 앞에 정의한 변수에 set을 붙여서 만든다
+    const [customer, setCustomer] = useState("");
 
     return (
       // Fragment : 화면에 아무 태그도 만들지 않으면서 여러 요소를 하나로 묶어 주는 투명한 포장지  
@@ -39,18 +41,16 @@ const App = () => {
              <h1>{title}</h1>
            </header>
            <main className="main">
-             <section className="screen">
-                <h2>접수 대기</h2>
-                <p>대기 중인 차량 : {waiting}대</p>
-                <button onClick={() => setWaiting(waiting + 1)}>한 대 접수</button>
-             </section>
+             <Counter label="접수 대기" />
+             <Counter label="정비 중" />
              <section className="screen">
                 <label htmlfor="name">이름</label>
-                <input id="name" type="text" />
+                <input id="name" type="text" onChange={(e) => console.log(e.target.value)} />
+              <p>손님 : {customer}</p>
              </section>
            </main>
         </>
     );
 };   
 
-export default App;
+export default Counter;
