@@ -6,7 +6,11 @@ import "./styles/reset.css";
 import "./styles/variables.css";
 import "./styles/layout.css";
 import "./styles/header.css";
+import "./styles/tailwind.css";
 
 createRoot(document.getElementById("root")).render(
-    <RouterProvider router={router} />,
+    <>    
+      <RouterProvider router={router} />
+      <Toaster />
+    </>,
 );

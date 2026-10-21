@@ -1,3 +1,10 @@
+/*
+세팅 (한 번만 하면 됩니다!)
+1. jsconfig.json 파일 추가
+2. vite.config.js 설정 추가
+3. npx shadcn@lastest init
+*/
+import { toast } from "@/components/ui/toast";
 import { Link, useNavigate } from "react-router";
 // Link는 바로 이동, useNavigate는 코드를 걸쳐서 이동
 const Login = () => {
@@ -6,6 +13,7 @@ const Login = () => {
   const handleSubit = (e) => {
     e.preventDefault();
     // 지금 서버가 없어서 원래는 서버 갔다가 온 후
+    toast.add({ title: "로그인 성공했습니다" });
     navigate("/");
   };
 

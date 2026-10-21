@@ -13,11 +13,11 @@ const router = createBrowserRouter([
  {
     element: <Layout />,
     children: [
-      { index: true, element: <Dashboard /> }
+      { index: true, element: <Dashboard /> },
       { path: "cars", element: <Cars /> },
     ],
   }, 
-  {path: "login", element}
+  {path: "login", element: <Login />}
 ]);
 
 export default router;
