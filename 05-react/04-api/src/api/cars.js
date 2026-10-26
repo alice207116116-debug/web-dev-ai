@@ -12,6 +12,11 @@ export const getCars = async () => {
 
 // 차량 추가
 // 객체를 그대로 넘기면 axios가 JSON으로 바꿔 보냄
-export const addCar = async (date) => {
+export const addCar = async (data) => {
     await axios.post("http://localhost:4000/api/cars", data);
+};
+
+// 차량 삭제 DELETE http://localhost:4000/api/cars/:id
+export const deleteCar = async(id) => {
+    await axios.delete(`http://localhost:4000/api/cars/${id}`)
 };

@@ -3,7 +3,8 @@ import styles from "./Cars.module.css";
 import { useState, useEffect } from "react";
 import CarsModal from "../components/CarsModal.jsx";
 import CarsCard from "../components/CarsCard.jsx";
-import { getCars } from "../api/cars.js";
+import { getCars, deleteCar } from "../api/cars.js";
+import { toast } from "@/components/ui/toast";
 
 const Cars = () => {
   // 날짜 변환을 위한 함수 'YYYY-MM-DD'
@@ -23,6 +24,22 @@ const Cars = () => {
       const result = await getCars();
       setCars(result);
     };
+
+    // 삭제할 때 id가 필요
+    const onDelete = async(id) => {
+      // try ~ catch : try에서 시도한 코드에서 에러가 나면 catch 구문으로 넘어감
+      try {
+        await deleteCar(id);
+        fetchCars(); // 목록 다시 불러오기
+      } catch(error) {
+        toast.add({
+          type: "error",
+          title: "차량 정보 삭제 실패",
+          description:
+            "해당 차량 정보는 정비기록이 있기 때문에 삭제할 수 없습니다.",
+      });
+    }
+  };
 
   // useEffect는 async를 바로 못 붙임 -> 함수를 만들고 호출
   useEffect(() => {
