@@ -46,11 +46,8 @@ const pool = new pg.Pool({
     ssl: { rejectUnauthorized: false },
 });
 
-// DB 확인용 
-const checkDb = async () => {
-   const { rows } = await pool.query("select * from cars");
-   console.log(rows);
-};
+// cors : 이 주소에서 오는 요청은 받아도 된다고 브라우저에 허러ㅏㄱ
+app.use(cors({ origin: "http://localhost:5173" }));
 
 // use : 모든 요청이 라우트에 닿기 전에 먼저 거치는 공통 처리를 등록
 app.use(express.json()); // 요청 본문(JSON)을 읽어 req.body에 추가
