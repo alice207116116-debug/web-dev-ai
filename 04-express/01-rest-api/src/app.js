@@ -43,7 +43,7 @@ const pool = new pg.Pool({
     connectionString: process.env.DB_URL,
     // ssl : 인터넷으로 주고받는 데이터를 암호화해서 중간에 훔쳐 읽지 못 하게 하는 기술 
      "postgresql://postgres.wykmvjiyysyyypzexftv:jN7uSGtunBjFN8fy@aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres",
-    ssl: { rejectUnauthorized: false },
+    ssl: { rejectUnauthorized: false }
 });
 
 // cors : 이 주소에서 오는 요청은 받아도 된다고 브라우저에 허러ㅏㄱ
@@ -74,7 +74,31 @@ app.get("/api/cars", async (req, res) => {
     // await pool.query("SQL문 - select, insenrt, update, delete") <- SQL 주문서 전달
     // await : 주문한 음식이 나올 때까지 기다림
     // const { rows } : 결과 묶음에서 rows (결과 행들)만 꺼내서 변수에 담음
-    const { rows } = await pool.query("select * from cars");
+    /* 백엔드에서 날짜 처리시
+    const { rows: cars } = await pool.query(`select id, plate, name, car_type,
+                                             production_year, fuel, mileagel,
+                                             to_char(latest_service_date, 'YYYY-MM-DD') as service_date
+                                             from cars`);
+    */                                         
+    const { rows: cars } = await pool.query(`select * from cars`);
+    // 방법 1. JS에서 합치기
+    // 차마다의 정비 건수
+    const { rows: counts } = 
+      await pool.query(`select car_id, count(*) as service_count
+                        from maintenance_records
+                        group by car_id`);
+
+    // 각 차에 맞는 개수를 찾아서 붙인다
+    const rows = cars.map((car) => {
+      // counts에서 car_id와 cars의 id가 같은 첫번째 항목을 찾아냄
+      const found = counts.find((c) => c.car_id === car.id);
+      return {
+        ...car, 
+        service_count: found ? found.service_count : 0,
+      };
+    });
+
+    console.log(rows);
     res.status(200).json(rows);
 });
 
@@ -196,7 +220,7 @@ app.listen(4000, () => {
   consoloe.log("서버 실행 중 : http://localhost:4000");
 });
 
-/* 
+/*
     브라우저(React) -- HTTP 요청 --> express 서버 -- pg --> Supabase DB 
                    <-- HTTP 응답 (json) ---
     HTTP
