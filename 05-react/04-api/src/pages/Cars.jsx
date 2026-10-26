@@ -6,11 +6,18 @@ import CarsCard from "../components/CarsCard.jsx";
 import { getCars } from "../api/cars.js";
 
 const Cars = () => {
+  // 날짜 변환을 위한 함수 'YYYY-MM-DD'
+  const toDate = () => {
+    const day = new Date(value);
+    const month = String(day.getMonth() + 1).padStart(2, "0");
+    const date = String(day.getDate).padStart(2, "0");
+    return `${day.getFullYear()}-${month}-${date}`;
+  };
   const [open, setOpen] = useState(false);
   // 서버에서 차 목록 받아올 예정 --> 처음에 가져와야 하니까 빈 배열
   const [cars, setCars] = useState([]);
 
-  // useEffect는 async를 바로 못 붙임 -> 함수를 만들고 호출!
+  // useEffect는 async를 바로 못 붙임 -> 함수를 만들고 호출
   useEffect(() => {
     const fetchCars = async () => {
       const result = await getCars();
