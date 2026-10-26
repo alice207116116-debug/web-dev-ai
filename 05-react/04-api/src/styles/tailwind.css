@@ -1,0 +1,8 @@
+/* 
+    만약 새 프로젝트라면 @import "tailwindcss";
+*/
+@import "tailwindcss/theme.css" layer(theme);
+
+@theme inline(
+    --color-card: var(--card-bg)
+);
