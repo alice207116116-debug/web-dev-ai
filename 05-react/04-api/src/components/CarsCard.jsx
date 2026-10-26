@@ -16,14 +16,6 @@ const CarsCard = ({
     serviceCount, 
     lastDate, 
     lastItem,
- }) => {
-    return (
-    // background-color: var(--card-bg) -> bg-[var(--card-bg)]
-    // border: 1px solid var(--border) -> border border-[var(--border)]
-    // border-radius: 14px -> rounded-[14px]
-    // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02)
-    // min-width: 0 -> min-w-0
-    // padding: 16px -> p-4
-  )
-};
+ }) => {};
+
 export default CarsCard;

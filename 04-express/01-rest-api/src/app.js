@@ -46,7 +46,7 @@ const pool = new pg.Pool({
     ssl: { rejectUnauthorized: false }
 });
 
-// cors : 이 주소에서 오는 요청은 받아도 된다고 브라우저에 허러ㅏㄱ
+// cors : 이 주소에서 오는 요청은 받아도 된다고 브라우저에 허락
 app.use(cors({ origin: "http://localhost:5173" }));
 
 // use : 모든 요청이 라우트에 닿기 전에 먼저 거치는 공통 처리를 등록

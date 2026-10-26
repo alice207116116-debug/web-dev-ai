@@ -7,7 +7,8 @@ import { getCars } from "../api/cars.js";
 
 const Cars = () => {
   // 날짜 변환을 위한 함수 'YYYY-MM-DD'
-  const toDate = () => {
+  const toDate = (value) => {
+    if (!value) return ""; // null인 경우
     const day = new Date(value);
     const month = String(day.getMonth() + 1).padStart(2, "0");
     const date = String(day.getDate).padStart(2, "0");
@@ -17,12 +18,14 @@ const Cars = () => {
   // 서버에서 차 목록 받아올 예정 --> 처음에 가져와야 하니까 빈 배열
   const [cars, setCars] = useState([]);
 
-  // useEffect는 async를 바로 못 붙임 -> 함수를 만들고 호출
-  useEffect(() => {
-    const fetchCars = async () => {
+  // useEffect 뿐만 아니라 CarsModal에서도 사용하기 위해서
+  const fetchCars = async () => {
       const result = await getCars();
       setCars(result);
     };
+
+  // useEffect는 async를 바로 못 붙임 -> 함수를 만들고 호출
+  useEffect(() => {
     fetchCars();
   }, []);
   return (
@@ -40,8 +43,8 @@ const Cars = () => {
           >
             차량 등록
           </button>
-          {/* 모달에서 open 값이 필요하기 때문에 props로 넘김 */}
-          <CarsModal open={open} setOpen={setOpen} />
+          {/* 모달에 필요한 것들 props로 전달 */}
+          <CarsModal open={open} setOpen={setOpen} getCars={fetchCars} />
           <div onClick={(e) => {
             if (e.target === e.currentTarget) {
               setOpen(false);
