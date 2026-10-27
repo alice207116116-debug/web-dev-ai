@@ -16,6 +16,8 @@ const CarsCard = ({
     serviceCount, 
     lastDate, 
     lastItem,
+    onDelete,
+    onEdit
  }) => {};
 
 export default CarsCard;

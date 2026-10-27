@@ -1,0 +1,1 @@
+// controllers : 요청(req)에서 값을 꺼내 service에 넘기고, 결과를 응답(res)으로 보낸다
