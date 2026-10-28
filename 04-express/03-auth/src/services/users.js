@@ -33,7 +33,7 @@ export const login = async ({ email, password }) => {
     console.log(password, user.password);
     const ok = await bcrypt.compare(password, user.password);
     if (ok) {
-        return user;
+        return user; // <-- 출입증 발급 token 토큰
     } else {
       return undefined;
     }
