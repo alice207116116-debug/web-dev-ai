@@ -9,13 +9,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login({ 
+    // 함수가 return을 하면 해당 값을 받을 변수가 필요하다
+    const result = await login({
       email: e.target.email.value, 
       password: e.target.password.value,
     });
-    console.log(result);
-    toast.add({ title: "로그인 성공" });
-    navigate("/");
+    if (result === "" || result ===  undefined || result === null) {
+      toast.add({type: "error", title: "이메일이나 비밀번호가 틀렸습니다"});
+    } else {
+      toast.add({ title: "로그인 성공" });
+      navigate("/");
+    }
   };
 
   return (
