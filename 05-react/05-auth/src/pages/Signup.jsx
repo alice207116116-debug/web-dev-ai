@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { User } from "lucide-react";
-import { signup } from "../api/auth.js";
+import { signup } from "../api/users.js";
 import { toast } from "@/components/ui/toast";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [showPw, setShowPw] = useState(false);
   const [preview, setPreview] = useState(null);
 
@@ -23,6 +25,7 @@ const Signup = () => {
       phone :e.target.phone.value,
     });
     toast.add({ title: "회원 가입 완료!" });
+    navigate("/login");
   };
 
   return (
