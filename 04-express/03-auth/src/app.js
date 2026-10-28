@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import carsRouter from "./routes/cars.js";
 import recordRouter from "./routes/records.js";
-import { errorHandler } from ""
+import usersRouter from "./routes/users.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express(); 
 
@@ -13,5 +14,6 @@ app.use(express.json());
 // /api/cars로 시작하는 요청은 carsRouter로
 app.use("/api/cars", carsRouter);
 app.use("/api/records", recordsRouter);
+app.use("/api/users", usersRouter);
 
 app.use(errorHandler);
