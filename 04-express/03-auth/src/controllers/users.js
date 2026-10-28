@@ -6,3 +6,8 @@ export const signup = async (req, res) => {
     await userService.interUser(req.body);
     res.sendStatus(201);
 };
+
+// login
+export const login = async(req, res) => {
+    
+}

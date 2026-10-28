@@ -1,11 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { login } from "../api/users.js";
+import { toast } from "@/components/ui/toast";
 
 const Login = () => {
+  const navigate = useNavigate;
   const [showPw, setShowPw] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await login({ 
+      email: e.target.email.value, 
+      password: e.target.password.value,
+    });
+    toast.add({ title: "로그인 성공" });
+    navigate("/");
   };
 
   return (
