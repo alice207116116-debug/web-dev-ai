@@ -4,22 +4,6 @@ import { supabase } from "../utils/supabase.js";
 
 // 차량 목록 조회
 export const getCars = async () => {
-  // fetch : 서버에 요청을 보낸다 -> fext로 사용하는 건 나중에 next.js에서
-  /*
-  const res = await fetch("http://localhost:4000/api/cars");
-  return res.json();
-  */
-  // axios : 서버에 요청을 보낸다(매서드 + 주소)
-  /*
-  const res = await axios.get("http://localhost:4000/api/cars");
-  return res.data;
-  */
-  //supabase 버전 -> RLS : row(줄)마다 누가 볼 수 있는지 직접 검사하는 도구
-  // -> disabled : 정책 해제(supabase에서 추천 X. 알람이 뜸)
-  // -> create policy : 정책 추가(권한 모두 허용)
-  // const { data } = await supabase.from("cars").select("*"); // = select * from cars
-  // return data;
-
   const { data } = await supabase
     .from("cars")
     .select("*, maintenance_records(count), latest:maintenance_records(item)")
@@ -35,7 +19,6 @@ export const getCars = async () => {
 
 // 차량 추가 POST http://localhost:4000/api/cars
 // 객체를 그대로 넘기면 axios가 JSON으로 바꿔 보냄
-// 바꿀 내용(data)은 본문에
 export const addCar = async (data) => {
   await axios.post("http://localhost:4000/api/cars", data);
 };

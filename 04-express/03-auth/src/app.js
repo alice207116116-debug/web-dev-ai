@@ -1,7 +1,7 @@
 import express from "express"; 
 import cors from "cors";
 import carsRouter from "./routes/cars.js";
-import recordRouter from "./routes/records.js";
+import recordsRouter from "./routes/records.js";
 import usersRouter from "./routes/users.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
@@ -17,3 +17,7 @@ app.use("/api/records", recordsRouter);
 app.use("/api/users", usersRouter);
 
 app.use(errorHandler);
+
+app.listen(4000, () => {
+  console.log("서버 실행 중 : http://localhost:4000");
+});

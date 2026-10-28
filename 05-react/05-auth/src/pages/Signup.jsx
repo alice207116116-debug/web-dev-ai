@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { User } from "lucide-react";
+import { signup } from "../api/auth.js";
 
 const Signup = () => {
   const [showPw, setShowPw] = useState(false);
@@ -13,6 +14,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // 서버한테 보내는 위치
   };
 
   return (
