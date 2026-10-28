@@ -11,5 +11,12 @@ export const interUser = async ({ email, password, name, phone }) => {
     );
 };
 
-
-
+export const login = async ({ email, password }) => {
+    // 사용자가 입력한 값이 DB에 저장한 값이 맞는지 조회 -> select
+    const { rows } = await pool.query(
+        `select * from users 
+        where email = $1 and password = $2`, 
+        [email, password],
+  );
+  return rows[0];
+};

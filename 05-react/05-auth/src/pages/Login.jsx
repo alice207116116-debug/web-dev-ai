@@ -13,6 +13,7 @@ const Login = () => {
       email: e.target.email.value, 
       password: e.target.password.value,
     });
+    console.log(result);
     toast.add({ title: "로그인 성공" });
     navigate("/");
   };
