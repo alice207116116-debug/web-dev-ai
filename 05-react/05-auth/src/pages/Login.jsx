@@ -14,7 +14,9 @@ const Login = () => {
       email: e.target.email.value, 
       password: e.target.password.value,
     });
-    if (result === "" || result ===  undefined || result === null) {
+    if (result === null) {
+      toast.add({ type: "error", title: "가입된 이메일이 없습니다" });
+    } else if (result === "" || result ===  undefined) {
       toast.add({type: "error", title: "이메일이나 비밀번호가 틀렸습니다"});
     } else {
       toast.add({ title: "로그인 성공" });
