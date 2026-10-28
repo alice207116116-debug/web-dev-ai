@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router";
 import Dashboard from "./pages/Dashboard.jsx";
 import Cars from "./pages/Cars.jsx";
 import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 import Layout from "./components/Layout.jsx";
 
 // 주소(URL) <-> 화면 연결 - 객체 하나 { path, element }
@@ -18,10 +19,8 @@ const router = createBrowserRouter([
       { path: "cars", element: <Cars /> },
     ],
   },
-  {
-    path: "login",
-    element: <Login />,
-  },
+  { path: "login", element: <Login /> },
+  { path: "signup", element: <Signup /> },
 ]);
 
 export default router;
