@@ -224,7 +224,8 @@
   width: 16px;
   height: 16px;
   transform: translateY(-50%);
-  background-image: url("/search.svg");
+  /* src/assets -> ../assets/search.svg */
+  background-image: url("/search.svg"); /* public 폴더*/
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;

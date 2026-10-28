@@ -1,25 +1,28 @@
 /*
-세팅 (한 번만 하면 됩니다!)
-1. jsconfig.json 파일 추가
-2. vite.config.js 설정 추가
-3. npx shadcn@lastest init
-*/
-import { toast } from "@/components/ui/toast";
-import { Link, useNavigate } from "react-router";
-// Link는 바로 이동, useNavigate는 코드를 걸쳐서 이동
-const Login = () => {
-  const navigate = useNavigate();
+  shadcn/ui : 버튼, 입력칸, 표, 모달, 토스트(알림), 달력 등 수십개 컴포넌트를 준다
+  -> 필요한 것만 add해서 가져오면 됌
 
-  const handleSubit = (e) => {
-    e.preventDefault();
-    // 지금 서버가 없어서 원래는 서버 갔다가 온 후
-    toast.add({ title: "로그인 성공했습니다" });
-    navigate("/");
+  세팅 (한 번만 하면 됩니다)
+  1.jsconfig.json 파일 추가
+  2.vite.config.js 설정 추가
+  3. npx shadcn@latest init
+*/
+
+import { toast } from "@/components/ui/toast";
+import { Link, useNavigate } from "react-router"; // Link : 바로 이동, useNavigate : 코드를 걸쳐서 이동 -> 리액트 도구 훅 (Hook)
+
+const Login = () => {
+  const navigate = useNavigate(); // 페이지를 이동(리다이렉트)할 때 사용하는 리액트 도구 훅 (Hook)
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 기존 바로 폼 제출하는 이벤트 막기
+    toast.add({ title: "로그인을 성공했습니다!" });
+    navigate("/"); // 원래는 서버 갔다가 온 후
   };
 
   return (
     <section className="login-screen">
-      <form className="login-card" onSubmit={handleSubit}>
+      <form className="login-card" onSubmit={handleSubmit}>
         <div className="login-brand">정비노트</div>
         <p className="login-title">자동차검사정비 · 관리자</p>
 
@@ -55,9 +58,9 @@ const Login = () => {
         <p className="form-result error" id="login-result"></p>
 
         <p className="login-foot">
-          <a href="./signup.html">계정 신청</a>
+          <Link to="/signup">계정 신청</Link>
           <span className="sep">·</span>
-          <a href="#">비밀번호를 잊으셨나요?</a>
+          <Link to="#">비밀번호를 잊으셨나요?</Link>
         </p>
       </form>
     </section>

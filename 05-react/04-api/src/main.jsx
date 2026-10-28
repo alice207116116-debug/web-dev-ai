@@ -7,10 +7,11 @@ import "./styles/variables.css";
 import "./styles/layout.css";
 import "./styles/header.css";
 import "./styles/tailwind.css";
+import { Toaster } from "@/components/ui/toast";
 
 createRoot(document.getElementById("root")).render(
-    <>    
-      <RouterProvider router={router} />
-      <Toaster />
-    </>,
+  <>
+    <RouterProvider router={router} />
+    <Toaster />
+  </>,
 );
