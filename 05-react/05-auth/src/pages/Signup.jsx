@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { User } from "lucide-react";
 import { signup } from "../api/auth.js";
+import { toast } from "@/components/ui/toast";
 
 const Signup = () => {
   const [showPw, setShowPw] = useState(false);
@@ -15,6 +16,13 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // 서버한테 보내는 위치
+    await signup({ 
+      email: e.target.email.value, 
+      password:e.target.password.value,
+      name: e.target.useName.value,
+      phone :e.target.phone.value,
+    });
+    toast.add({ title: "회원 가입 완료!" });
   };
 
   return (
