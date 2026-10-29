@@ -1,10 +1,21 @@
-import { Link, NavLink, useLocation } from "react-router"; // 경로 관련은 거의 react-router에서 제공
+import { Link, NavLink, useLocation, useNavigate } from "react-router"; // 경로 관련은 거의 react-router에서 제공
 import { User } from "lucide-react";
 // import "../utils/menu.js";
 import { useState, useEffect } from "react";
 
-// 기존 header에 해당하는 태그들만
 const Header = () => {
+  const navigate  = useNavigate();
+  const token = localStorage.getItem("token");
+  // JSON.parse : 문자열 -> 객체로
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // 로그아웃 함수 : localStorage에서 토큰 지우고 유저 정보 지우고
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/");
+  };
+
   const { pathname } = useLocation();
 
   // 메뉴가 열렸는지(true) 닫혔는지(false) 체크
@@ -64,16 +75,26 @@ const Header = () => {
             <NavLink to="/consultation">고객 상담</NavLink>
           </nav>
         </div>
-
         <div className="header-right">
+        {token ? (
+          <>
           <div className="no-profile">
-            <User size={20} color="#FFF" />
+            <User size={20} color="#ffffff" />
           </div>
-
           <span className="user-name">김정비 사장님</span>
+          <button 
+             type="button" 
+             onClick={logout}
+             className="cusor-pointer rounded-md border border-line"
+          >
+            로그아웃
+          </button>
+        </>
+        ) : (
+          <Link to="/login">로그인</Link>
+        )}
         </div>
       </header>
-
       {/* 바깥(어두운 배경) 클릭하면 닫기 */}
       <div
         className={menuOpen ? "menu-overlay active" : "menu-overlay"}

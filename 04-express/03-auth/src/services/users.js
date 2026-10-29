@@ -1,5 +1,7 @@
 import { pool } from "../db.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import "dotenv/config";
 
 // insertUser 
 export const interUser = async ({ email, password, name, phone }) => {
@@ -20,7 +22,7 @@ export const login = async ({ email, password }) => {
     // 비밀번호는 암호화를 했기 때문에 암호화된 걸 확인 -> bcrypt.compare
     // DB 조회는 이메일 가지고만 함
     const { rows } = await pool.query(
-        `select password from users 
+        `select password, id, email, name from users 
         where email = $1`,
         [email],
     );
@@ -33,7 +35,18 @@ export const login = async ({ email, password }) => {
     console.log(password, user.password);
     const ok = await bcrypt.compare(password, user.password);
     if (ok) {
-        return user; // <-- 출입증 발급 token 토큰
+        // 출입증 발급 token 토큰
+        // 누구나 열어 볼 수 있음 -> password라던가 개인정보는 가급적으로 x
+        // 주로 추가하는 건 id, email, role
+        // expiresIn : 유효 시간 -> 지나면 다시 로그인
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+            expiresIn: "1h",    
+        });
+        // 키랑 값이 똑같으면 값이 생략 가능
+        return {
+          token, 
+          user: { id: user.id, email: user.email, name: user.name },
+        }; 
     } else {
       return undefined;
     }

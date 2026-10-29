@@ -14,6 +14,7 @@ const Login = () => {
       email: e.target.email.value, 
       password: e.target.password.value,
     });
+    console.log(result);
     if (result === null) {
       toast.add({ type: "error", title: "가입된 이메일이 없습니다" });
     } else if (result === "" || result ===  undefined) {
@@ -21,6 +22,11 @@ const Login = () => {
     } else {
       toast.add({ title: "로그인 성공" });
       navigate("/");
+      // 토큰은 브라우저 저장소(localStorage)에 저장 -> 새로고침을 하든 브라우저 창을 닫든 남아있음
+      localStorage.setItem("token", result.token);
+      // localStorage에는 String(문자열)만 들어가짐
+      // JSON.stringify : 객체 -> 문자로
+      localStorage.setItem("user", JSON.stringify(result.user));
     }
   };
 
