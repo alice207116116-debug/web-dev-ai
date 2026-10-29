@@ -1,16 +1,21 @@
 import "../styles/dashboard.css";
-
 /*
   페이지 컴포넌트 = 화면 한 장을 그리는 함수
   - 이름은 대문자로 시작(소문자면 React가 HTML 태그로 인식함)
   - 맨 아래 export default 함수면; -> router.jsx가 가져다 쓸 수 있게 내보내기
 */
-
-// index.html <body></body> 안에 있는 태그들
+// index.html의 body 태그 안에 있는 태그들
 const Dashboard = () => {
-  return (
-    <>
+  const changeName = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    localStorage.setItem(
+      "user", 
+      JSON.stringify({ ...user, name: "이름 바꿈" }),
+    );
+  };
+  return ( 
       <main>
+        <button type="button" onClick={changeName}>이름 바꾸기 (임시)</button>
         <section className="title-section">
           <div>
             <h1>대시보드</h1>
@@ -18,7 +23,6 @@ const Dashboard = () => {
           </div>
           <span className="today-date">2026년 9월 2일 (수)</span>
         </section>
-
         <section className="stat-grid">
           <div className="card stat-card">
             <p className="stat-label">총 차량 수</p>
@@ -144,7 +148,6 @@ const Dashboard = () => {
           </div>
         </section>
       </main>
-    </>
   );
 };
 

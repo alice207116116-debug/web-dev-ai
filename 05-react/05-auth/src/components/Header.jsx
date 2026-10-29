@@ -18,7 +18,7 @@ const Header = () => {
 
   const { pathname } = useLocation();
 
-  // 메뉴가 열렸는지(true) 닫혔는지(false) 체크
+  // 메뉴가 열렸는지(true) 닫혔는지(false)
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
@@ -27,14 +27,6 @@ const Header = () => {
     setMenuOpen(false);
   }, [pathname]);
 
-  /*
-    현재 컴포넌트의 라이프사이클 관리
-    마운트(화면에 처음 나타남) - 업데이트(state, props가 바뀌면서 다시 그려짐) - 언마운트(화면에서 사라짐)
-    [] : 마운트 -> 처음 나타났을 때
-    [] 안의 값이 들억간다면 그 값이 바뀔 때 마다
-  */
-
-  // esc를 누르면 메뉴가 닫힘
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -81,11 +73,11 @@ const Header = () => {
           <div className="no-profile">
             <User size={20} color="#ffffff" />
           </div>
-          <span className="user-name">김정비 사장님</span>
+          <span className="user-name">{user?.name} 사장님</span>
           <button 
              type="button" 
              onClick={logout}
-             className="cusor-pointer rounded-md border border-line"
+             className="cursor-pointer rounded-md border border-line"
           >
             로그아웃
           </button>
