@@ -4,15 +4,16 @@ import { create } from "zustand";
 // create : store 만들기
 export const useAuthStore = create((set) => ({
     token: localStorage.getItem("token"),
-    user: null, // 처음 값 : 로그인 전
+    user: JSON.parse(localStorage.getItem("user")), // 처음 값 : 로그인 전
     setUser: (user) => set({ user }),
     login: (token, user) => {
       localStorage.setItem("token", token);
-      localStorage.setItem("user", user);
+      localStorage.setItem("user", JSON.stringify(user)); // 임시적인 거라 새로고침 간단한 해결법
       set({ user, token });
     },
     logout: () => {
         localStorage.removeItem("token");
-        set({ user: null });
+        localStorage.removeItem("user");
+        set({ user: null, token: null });
     },
 }));
