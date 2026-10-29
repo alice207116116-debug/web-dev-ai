@@ -1,17 +1,22 @@
 import "../styles/dashboard.css";
+import { useAuthStore } from "../store/auth.js";
 /*
   페이지 컴포넌트 = 화면 한 장을 그리는 함수
   - 이름은 대문자로 시작(소문자면 React가 HTML 태그로 인식함)
-  - 맨 아래 export default 함수면; -> router.jsx가 가져다 쓸 수 있게 내보내기
+  - 맨 아래 export default 함수명; -> router.jsx가 가져다 쓸 수 있게 내보내기
 */
 // index.html의 body 태그 안에 있는 태그들
 const Dashboard = () => {
+  const user = useAuthStore((state) => state.user);
+  const setUser = useAuthStore((state) => state.setUser);
+
   const changeName = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    localStorage.setItem(
-      "user", 
-      JSON.stringify({ ...user, name: "이름 바꿈" }),
-    );
+    setUser({ ...user, name: "이름 바꿈" });
+    // const user = JSON.parse(localStorage.getItem("user"));
+    // localStorage.setItem(
+    //   "user", 
+    //   JSON.stringify({ ...user, name: "이름 바꿈" }),
+    // ); --> 새로고침을 해야 수정이 됨 -> zustand 같은 전역 상태관리를 사용하는 이유
   };
   return ( 
       <main>
