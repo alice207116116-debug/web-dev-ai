@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Toaster } from "@/components/ui/toast"
+import { Toaster } from "@/components/ui/toast";
 // 원래 main.jsx에서 import 하던 CSS 그대로
 import "@/styles/reset.css";
 import "@/styles/variables.css";

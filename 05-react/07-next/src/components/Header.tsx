@@ -5,8 +5,8 @@ import { User } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const menus = [
-  { href: "/", label: "대시보드" }, 
-  { href: "/cars", label: "차량관리" }, 
+  { href: "/", label: "대시보드" },
+  { href: "/cars", label: "차량관리" },
 ];
 
 const Header = () => {
@@ -58,7 +58,7 @@ const Header = () => {
           </nav>
         </div>
         <div className="header-right">
-            <Link href="/login">로그인</Link>
+          <Link href="/login">로그인</Link>
         </div>
       </header>
       {/* 바깥(어두운 배경) 클릭하면 닫기 */}
