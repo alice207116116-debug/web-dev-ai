@@ -65,6 +65,16 @@ const Header = ({ user } : { user: LoginUser | null }) => {
         <div className="header-right">
           {user ? (
             <>
+            {user.profile_image ? (
+              <img 
+                src={user.profile_image} 
+                className="size-8 rounded-full object-cover"
+             /> 
+            ) : (
+             <div className="no-profile">
+              <User size={20} color="#ffffff" />
+             </div>
+            )}
             <span className="user-name">{user.name} 사장님</span>
             <form action={logout}>
               <button type="submit">로그아웃</button>
