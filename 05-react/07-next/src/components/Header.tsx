@@ -3,13 +3,18 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { User } from "lucide-react";
 import { useState, useEffect } from "react";
+// lucide 아이콘 User와 이름이 겹쳐서 as로 바꿈
+import type {User as LoginUser} from "@/types";
+// 클라이언트 컴포넌트에서는 actions에 만들어 놓은 서버 함수를 쓸 수 있음
+import { logout } from "@/app/login/actions";
 
 const menus = [
   { href: "/", label: "대시보드" },
   { href: "/cars", label: "차량관리" },
 ];
 
-const Header = () => {
+// layout이 넘겨 준 사람 (로그인 안 했으면 null)67
+const Header = ({ user } : { user: LoginUser | null }) => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
@@ -58,7 +63,16 @@ const Header = () => {
           </nav>
         </div>
         <div className="header-right">
+          {user ? (
+            <>
+            <span className="user-name">{user.name} 사장님</span>
+            <form action={logout}>
+              <button type="submit">로그아웃</button>
+            </form>
+           </>
+          ) : (
           <Link href="/login">로그인</Link>
+          )}
         </div>
       </header>
       {/* 바깥(어두운 배경) 클릭하면 닫기 */}
