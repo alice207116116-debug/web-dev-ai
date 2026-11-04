@@ -1,6 +1,6 @@
 "use server";
 
-import { redirect } from "next/navigation";
+import { redirect } from "next/navigation"; // 다른 화면으로 보내기
 import { createClient } from "@/lib/supabase";
 import type { ActionResult } from "@/types";
 

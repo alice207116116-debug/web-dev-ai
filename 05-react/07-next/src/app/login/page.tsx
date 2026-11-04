@@ -1,7 +1,11 @@
 "use client";
-import { useState } from "react";
+// useActionState : 서버 함수 결과와 보내는 중인지를 받는 훅 (리액트 19 이상)
+import { useActionState, useState } from "react";
 import Link from "next/link";
+import { User } from "lucide-react";
 import { toast } from "@/components/ui/toast";
+import { signup } from "../login/actions";
+
 
 const Login = () => {
   const [showPw, setShowPw] = useState(false);
